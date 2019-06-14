@@ -1,6 +1,6 @@
 ## Notice
 That's my fork for optimising label-maker for Google Colab
-I add argument mbtiles_path for labels command
+I add argument `-mbtiles` for `label-maker labels` command
 
 
 

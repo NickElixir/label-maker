@@ -40,7 +40,8 @@ def parse_args(args):
                          help='location of config.json file')
     pparser.add_argument('-d', '--dest', default='data', type=str,
                          help='directory for storing output files')
-
+    pparser.add_argument('-mb', '--mbtiles', default='', type=str,
+                         help='directory with QA tiles')
     # add subcommands
     subparsers = parser.add_subparsers(dest='command')
 

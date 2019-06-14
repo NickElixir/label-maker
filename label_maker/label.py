@@ -29,7 +29,7 @@ tile_results = dict()
 # clip all geometries to a tile
 clip_mask = Polygon(((0, 0), (0, 255), (255, 255), (255, 0), (0, 0)))
 
-def make_labels(dest_folder, zoom, country, classes, ml_type, bounding_box, sparse, **kwargs):
+def make_labels(dest_folder, mbtiles_folder, zoom, country, classes, ml_type, bounding_box, sparse, **kwargs):
     """Create label data from OSM QA tiles for specified classes
 
     Perform the following operations:
@@ -42,6 +42,8 @@ def make_labels(dest_folder, zoom, country, classes, ml_type, bounding_box, spar
     ------------
     dest_folder: str
         Folder to save labels and example tiles into
+    mbtiles_folder: str
+        Folder where .mbtiles file is located
     zoom: int
         The zoom level to create tiles at
     country: str
@@ -66,7 +68,8 @@ def make_labels(dest_folder, zoom, country, classes, ml_type, bounding_box, spar
         Other properties from CLI config passed as keywords to other utility functions
     """
 
-    mbtiles_file = op.join(dest_folder, '{}.mbtiles'.format(country))
+    mbtiles_file = op.join(mbtiles_folder, '{}.mbtiles'.format(country))
+    print(mbtiles_files)
     mbtiles_file_zoomed = op.join(dest_folder, '{}-z{!s}.mbtiles'.format(country, zoom))
 
     if not op.exists(mbtiles_file_zoomed):

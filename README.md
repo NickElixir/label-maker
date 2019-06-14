@@ -1,3 +1,9 @@
+## Notice
+That's my fork for optimising label-maker for Google Colab
+I add argument mbtiles_path for labels command
+
+
+
 # Label Maker
 ## Data Preparation for Satellite Machine Learning
 
@@ -13,16 +19,18 @@ _satellite imagery from [Mapbox](https://www.mapbox.com/) and [Digital Globe](ht
 ## Installation
 
 ```bash
-pip install label-maker
+!git clone https://github.com/NickElixir/label-maker.git
+os.chdir("label-maker")
+!python setup.py install
 ```
 
 Note that running this library this requires `tippecanoe` as a "peer-dependency" and that command should be available from your command-line before running this.
 
 ## Documentation
 
-Full documentation is available here: http://devseed.com/label-maker/
+Full author's documentation is available here: http://devseed.com/label-maker/
 
-## Acknowledgements
+## Acknowledgements from @Drewbo
 
 This library builds on the concepts of [skynet-data](https://github.com/developmentseed/skynet-data). It wouldn't be possible without the excellent data from OpenStreetMap and Mapbox under the following licenses:
 - OSM QA tile data [copyright OpenStreetMap contributors](http://www.openstreetmap.org/copyright) and licensed under [ODbL](http://opendatacommons.org/licenses/odbl/)

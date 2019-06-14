@@ -69,7 +69,7 @@ def make_labels(dest_folder, mbtiles_folder, zoom, country, classes, ml_type, bo
     """
 
     mbtiles_file = op.join(mbtiles_folder, '{}.mbtiles'.format(country))
-    print(mbtiles_files)
+    print(mbtiles_file)
     mbtiles_file_zoomed = op.join(dest_folder, '{}-z{!s}.mbtiles'.format(country, zoom))
 
     if not op.exists(mbtiles_file_zoomed):

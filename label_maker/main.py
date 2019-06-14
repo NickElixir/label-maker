@@ -72,11 +72,11 @@ def cli():
     # read in configuration file and destination folder
     config = json.load(open(args.get('config')))
     dest_folder = args.get('dest')
+    mbtiles_folder = args.get('mbtiles')
 
     # create destination folder if necessary
     if not op.isdir(dest_folder):
         makedirs(dest_folder)
-
     # validate configuration file
     v = Validator(schema)
     valid = v.validate(config)
@@ -97,7 +97,7 @@ def cli():
         download_mbtiles(dest_folder=dest_folder, **config)
     elif cmd == 'labels':
         sparse = args.get('sparse', False)
-        make_labels(dest_folder=dest_folder, sparse=sparse, **config)
+        make_labels(dest_folder=dest_folder, mbtiles_folder=mbtiles_folder, sparse=sparse, **config)
     elif cmd == 'preview':
         number = args.get('number')
         preview(dest_folder=dest_folder, number=number, **config)

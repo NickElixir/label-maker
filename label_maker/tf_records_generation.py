@@ -131,7 +131,7 @@ def main(_):
     test_dir = op.join(os.getcwd(), FLAGS.test_tf_path)
     print(train_dir)
     print(test_dir)
-    
+
     if not op.isdir(train_dir):
         makedirs(train_dir)
     if not op.isdir(test_dir):
@@ -147,7 +147,7 @@ def main(_):
     ### for train
     writer = tf.python_io.TFRecordWriter(FLAGS.train_rd_path)
     grouped = split(train_df, 'filename')
-
+    print("train_group", grouped)
     for group in grouped:
         tf_example = create_tf_example(group, train_dir)
         writer.write(tf_example.SerializeToString())
@@ -158,6 +158,7 @@ def main(_):
     ### for test
     writer = tf.python_io.TFRecordWriter(FLAGS.test_rd_path)
     grouped = split(test_df, 'filename')
+    print("test_group", grouped)
     for group in grouped:
         tf_example = create_tf_example(group, test_dir)
         writer.write(tf_example.SerializeToString())

@@ -101,7 +101,8 @@ def main(_):
     tile_names = [tile for tile in labels.files]
     tile_names.sort()
     tiles = np.array(tile_names)
-
+    print(tiles)
+    
     tf_tiles_info = []
 
     for tile in tiles:

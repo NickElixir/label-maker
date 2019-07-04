@@ -97,26 +97,22 @@ def create_tf_example(group, path):
 
 def main(_):
     labels = np.load(op.join(os.getcwd(), FLAGS.label_input))
-    print(op.join(os.getcwd(), FLAGS.label_input))
     tile_names = [tile for tile in labels.files]
     tile_names.sort()
     tiles = np.array(tile_names)
 
     tf_tiles_info = []
-    print(tiles)
 
     for tile in tiles:
         bboxes = labels[tile].tolist()
-        print("tile", tile)
-        print("bboxes", bboxes)
         width = 256
         height = 256
         if bboxes:
             for bbox in bboxes:
+                    class_num = bbox[4]
                     bbox = [max(0, min(255, x)) for x in bbox[0:4]]
-                    y = ["{}.jpg".format(tile), width, height, bbox[0], bbox[1], bbox[2], bbox[3]]
+                    y = ["{}.jpg".format(tile), width, height, tags[class_num], bbox[0], bbox[1], bbox[2], bbox[3]]
                     tf_tiles_info.append(y)
-    print(tf_tiles_info)
     split_index = int(len(tf_tiles_info) * 0.8)
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     df = pd.DataFrame(tf_tiles_info, columns=column_name)
@@ -128,7 +124,6 @@ def main(_):
         len(set(train_df['filename'])), len(set(test_df['filename']))))
 
     tiles_dir = op.join(os.getcwd(), FLAGS.tiles_input)
-    print(tiles_dir)
 
     train_dir = op.join(os.getcwd(), FLAGS.train_tf_path)
     test_dir = op.join(os.getcwd(), FLAGS.test_tf_path)

@@ -127,6 +127,7 @@ def main(_):
         len(set(train_df['filename'])), len(set(test_df['filename']))))
 
     tiles_dir = op.join(os.getcwd(), FLAGS.tiles_input)
+    print(tiles_dir)
     #train_dir = op.join(os.getcwd(), FLAGS.train_input)
     #test_dir = op.join(os.getcwd(), FLAGS.test_input)
 

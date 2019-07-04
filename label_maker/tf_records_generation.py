@@ -14,6 +14,8 @@ python tf_records_generation.py --label_input=labels.npz \
              --train_rd_path=data/train_buildings.record \
              --test_rd_path=data/test_buildings.record
 """
+#cansat tags for a while
+tags = ["buildings", "highway", "aerodrom", "apron", "runway", "taxiway", "grassland", "heath", "scrub", "water", "wood", "farmland", "grass", "residential", "ditch", "river"]
 
 import os
 import io

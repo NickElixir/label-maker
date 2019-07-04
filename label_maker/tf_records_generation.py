@@ -102,7 +102,7 @@ def main(_):
     tile_names.sort()
     tiles = np.array(tile_names)
     print(tiles)
-    
+
     tf_tiles_info = []
 
     for tile in tiles:
@@ -116,7 +116,7 @@ def main(_):
                     bbox = [max(0, min(255, x)) for x in bbox[0:4]]
                     y = ["{}.jpg".format(tile), width, height, cl_str, bbox[0], bbox[1], bbox[2], bbox[3]]
                     tf_tiles_info.append(y)
-
+    print(tf_tiles_info)
     split_index = int(len(tf_tiles_info) * 0.8)
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     df = pd.DataFrame(tf_tiles_info, columns=column_name)

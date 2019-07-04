@@ -129,7 +129,9 @@ def main(_):
 
     train_dir = op.join(os.getcwd(), FLAGS.train_tf_path)
     test_dir = op.join(os.getcwd(), FLAGS.test_tf_path)
-
+    print(train_dir)
+    print(test_dir)
+    
     if not op.isdir(train_dir):
         makedirs(train_dir)
     if not op.isdir(test_dir):

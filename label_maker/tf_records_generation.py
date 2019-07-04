@@ -30,6 +30,10 @@ from collections import namedtuple
 
 flags = tf.app.flags
 flags.DEFINE_string('label_input', '', 'Path to the labels.npz input')
+flags.DEFINE_string('tiles_input', '', 'Path to the tiles input')
+flags.DEFINE_string('tiles_input', '', 'Path to the tiles input')
+flags.DEFINE_string('train_input', '', 'Path to the train input')
+flags.DEFINE_string('test_input', '', 'Path to the test input')
 flags.DEFINE_string('train_rd_path', '', 'Path to output TFRecord')
 flags.DEFINE_string('test_rd_path', '', 'Path to output TFRecord')
 FLAGS = flags.FLAGS
@@ -122,9 +126,9 @@ def main(_):
     print("You have {} training tiles and {} test tiles ready".format(
         len(set(train_df['filename'])), len(set(test_df['filename']))))
 
-    tiles_dir = op.join(os.getcwd(), '../tiles')
-    train_dir = op.join(os.getcwd(), 'images', 'train')
-    test_dir = op.join(os.getcwd(), 'images', 'test')
+    tiles_dir = op.join(os.getcwd(), FLAGS.tiles_input)
+    #train_dir = op.join(os.getcwd(), FLAGS.train_input)
+    #test_dir = op.join(os.getcwd(), FLAGS.test_input)
 
     if not op.isdir(train_dir):
         makedirs(train_dir)

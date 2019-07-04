@@ -31,9 +31,8 @@ from collections import namedtuple
 flags = tf.app.flags
 flags.DEFINE_string('label_input', '', 'Path to the labels.npz input')
 flags.DEFINE_string('tiles_input', '', 'Path to the tiles input')
-flags.DEFINE_string('tiles_input', '', 'Path to the tiles input')
-flags.DEFINE_string('train_input', '', 'Path to the train input')
-flags.DEFINE_string('test_input', '', 'Path to the test input')
+flags.DEFINE_string('train_tf_path', '', 'Path to the train input')
+flags.DEFINE_string('test_tf_path', '', 'Path to the test input')
 flags.DEFINE_string('train_rd_path', '', 'Path to output TFRecord')
 flags.DEFINE_string('test_rd_path', '', 'Path to output TFRecord')
 FLAGS = flags.FLAGS
@@ -98,6 +97,7 @@ def create_tf_example(group, path):
 
 def main(_):
     labels = np.load(op.join(os.getcwd(), FLAGS.label_input))
+    print(labels)
     tile_names = [tile for tile in labels.files]
     tile_names.sort()
     tiles = np.array(tile_names)
@@ -128,8 +128,9 @@ def main(_):
 
     tiles_dir = op.join(os.getcwd(), FLAGS.tiles_input)
     print(tiles_dir)
-    #train_dir = op.join(os.getcwd(), FLAGS.train_input)
-    #test_dir = op.join(os.getcwd(), FLAGS.test_input)
+
+    train_dir = op.join(os.getcwd(), FLAGS.train_tf_path)
+    test_dir = op.join(os.getcwd(), FLAGS.test_tf_path)
 
     if not op.isdir(train_dir):
         makedirs(train_dir)

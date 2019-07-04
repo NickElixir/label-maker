@@ -98,7 +98,6 @@ def create_tf_example(group, path):
 def main(_):
     labels = np.load(op.join(os.getcwd(), FLAGS.label_input))
     print(op.join(os.getcwd(), FLAGS.label_input))
-    print(labels.files)
     tile_names = [tile for tile in labels.files]
     tile_names.sort()
     tiles = np.array(tile_names)
@@ -108,6 +107,8 @@ def main(_):
 
     for tile in tiles:
         bboxes = labels[tile].tolist()
+        print("tile", tile)
+        print("bboxes", bboxes)
         width = 256
         height = 256
         if bboxes:

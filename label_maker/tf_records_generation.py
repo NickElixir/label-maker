@@ -113,10 +113,8 @@ def main(_):
         height = 256
         if bboxes:
             for bbox in bboxes:
-                if bbox[4] == 1:
-                    cl_str = "building"
                     bbox = [max(0, min(255, x)) for x in bbox[0:4]]
-                    y = ["{}.jpg".format(tile), width, height, cl_str, bbox[0], bbox[1], bbox[2], bbox[3]]
+                    y = ["{}.jpg".format(tile), width, height, bbox[0], bbox[1], bbox[2], bbox[3]]
                     tf_tiles_info.append(y)
     print(tf_tiles_info)
     split_index = int(len(tf_tiles_info) * 0.8)

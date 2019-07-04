@@ -113,6 +113,7 @@ def main(_):
             for bbox in bboxes:
                     class_num = bbox[4]
                     bbox = [max(0, min(255, x)) for x in bbox[0:4]]
+                    print(class_num, tags[class_num])
                     y = ["{}.jpg".format(tile), width, height, tags[class_num], bbox[0], bbox[1], bbox[2], bbox[3]]
                     tf_tiles_info.append(y)
     split_index = int(len(tf_tiles_info) * 0.8)
@@ -147,7 +148,7 @@ def main(_):
     ### for train
     writer = tf.python_io.TFRecordWriter(FLAGS.train_rd_path)
     grouped = split(train_df, 'filename')
-    print("train_group", grouped)
+    print("train_group 0", grouped[0])
     for group in grouped:
         tf_example = create_tf_example(group, train_dir)
         writer.write(tf_example.SerializeToString())
@@ -158,7 +159,7 @@ def main(_):
     ### for test
     writer = tf.python_io.TFRecordWriter(FLAGS.test_rd_path)
     grouped = split(test_df, 'filename')
-    print("test_group", grouped)
+    print("test_group 0", grouped[0])
     for group in grouped:
         tf_example = create_tf_example(group, test_dir)
         writer.write(tf_example.SerializeToString())

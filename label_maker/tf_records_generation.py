@@ -111,7 +111,6 @@ def main(_):
             for bbox in bboxes:
                     class_num = bbox[4]
                     bbox = [max(0, min(255, x)) for x in bbox[0:4]]
-                    print(class_num, tags[class_num])
                     y = ["{}.jpg".format(tile), width, height, class_num, bbox[0], bbox[1], bbox[2], bbox[3]]
                     tf_tiles_info.append(y)
     split_index = int(len(tf_tiles_info) * 0.8)

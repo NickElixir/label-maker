@@ -1,60 +1,60 @@
 item {
-  id: 0
+  id: 1
   name: 'building'
 }
 item {
-    id: 1
+    id: 2
     name: 'highway'
 }
 item {
-    id: 2
+    id: 3
     name: 'aerodrom'
 }
 item {
-    id: 3
+    id: 4
     name: "apron"
 }
 item {
-    id: 4
+    id: 5
     name: "runway"
 }
 item {
-    id: 5
+    id: 6
     name: "taxiway"
 }
 item {
-    id: 6
+    id: 7
     name: "grassland"
 }
 item {
-    id: 7
+    id: 8
     name: "heath"
 }
 item {
-    id: 8
+    id: 9
     name: "scrub"
 }
 item {
-    id: 9
+    id: 10
     name: "water"
 }
 item {
-    id: 10
+    id: 11
     name: "farmland"
 }
 item {
-    id: 11
+    id: 12
     name: "grass"
 }
 item {
-    id: 12
+    id: 13
     name: "residential"
 }
 item {
-    id: 13
+    id: 14
     name: "ditch"
 }
 item {
-    id: 14
+    id: 15
     name: "river"
 }

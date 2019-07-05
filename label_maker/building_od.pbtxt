@@ -1,0 +1,60 @@
+item {
+  id: 0
+  name: 'building'
+}
+item {
+    id: 1
+    name: 'highway'
+}
+item {
+    id: 2
+    name: 'aerodrom'
+}
+item {
+    id: 3
+    name: "apron:
+}
+item {
+    id: 4
+    name: "runway"
+}
+item {
+    id: 5
+    name: "taxiway"
+}
+item {
+    id: 6
+    name: "grassland"
+}
+item {
+    id: 7
+    name: "heath"
+}
+item {
+    id: 8
+    name: "scrub"
+}
+item {
+    id: 9
+    name: "water"
+}
+item {
+    id: 10
+    name: "farmland"
+}
+item {
+    id: 11
+    name: "grass"
+}
+item {
+    id: 12
+    name: "residential"
+}
+item {
+    id: 13
+    name: "ditch"
+}
+item {
+    id: 14
+    name: "river"
+}

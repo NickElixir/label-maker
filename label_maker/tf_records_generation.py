@@ -14,7 +14,7 @@ python tf_records_generation.py --label_input=labels.npz \
              --train_rd_path=data/train_buildings.record \
              --test_rd_path=data/test_buildings.record
 """
-#cansat tags for a while
+#cansat tags for a while 
 tags = ["buildings", "highway", "aerodrom", "apron", "runway", "taxiway", "grassland", "heath", "scrub", "water", "wood", "farmland", "grass", "residential", "ditch", "river"]
 
 import os
@@ -40,9 +40,7 @@ flags.DEFINE_string('test_rd_path', '', 'Path to output TFRecord')
 FLAGS = flags.FLAGS
 
 def class_text_to_int(row_label):
-    if row_label == 'building':
-        return 1
-    return None
+    return tags[row_label]
 
 def split(df, group):
     data = namedtuple('data', ['filename', 'object'])
@@ -77,8 +75,8 @@ def create_tf_example(group, path):
         xmaxs.append(row['xmax'] / width)
         ymins.append(row['ymin'] / height)
         ymaxs.append(row['ymax'] / height)
-        classes_text.append(row['class'].encode('utf8'))
-        classes.append(class_text_to_int(row['class']))
+        classes_text.append(tags[row['class_num']].encode('utf8'))
+        classes.append(row['class_num']))
 
     tf_example = tf.train.Example(features=tf.train.Features(feature={
         'image/height': dataset_util.int64_feature(height),
@@ -114,10 +112,10 @@ def main(_):
                     class_num = bbox[4]
                     bbox = [max(0, min(255, x)) for x in bbox[0:4]]
                     print(class_num, tags[class_num])
-                    y = ["{}.jpg".format(tile), width, height, tags[class_num], bbox[0], bbox[1], bbox[2], bbox[3]]
+                    y = ["{}.jpg".format(tile), width, height, class_num, bbox[0], bbox[1], bbox[2], bbox[3]]
                     tf_tiles_info.append(y)
     split_index = int(len(tf_tiles_info) * 0.8)
-    column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
+    column_name = ['filename', 'width', 'height', 'class_num', 'xmin', 'ymin', 'xmax', 'ymax']
     df = pd.DataFrame(tf_tiles_info, columns=column_name)
     # shuffle the dataframe
     df = df.sample(frac=1)
@@ -127,7 +125,6 @@ def main(_):
         len(set(train_df['filename'])), len(set(test_df['filename']))))
 
     tiles_dir = op.join(os.getcwd(), FLAGS.tiles_input)
-
     train_dir = op.join(os.getcwd(), FLAGS.train_tf_path)
     test_dir = op.join(os.getcwd(), FLAGS.test_tf_path)
     print(train_dir)

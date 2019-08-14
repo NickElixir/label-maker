@@ -40,21 +40,24 @@ item {
 }
 item {
     id: 11
+    name: "wood"
+item {
+    id: 12
     name: "farmland"
 }
 item {
-    id: 12
+    id: 13
     name: "grass"
 }
 item {
-    id: 13
+    id: 14
     name: "residential"
 }
 item {
-    id: 14
+    id: 15
     name: "ditch"
 }
 item {
-    id: 15
+    id: 16
     name: "river"
 }
